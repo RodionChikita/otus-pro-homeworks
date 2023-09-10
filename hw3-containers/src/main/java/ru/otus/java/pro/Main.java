@@ -1,7 +1,6 @@
 package ru.otus.java.pro;
 
 
-
 public class Main {
     public static void main(String[] args) {
         Apple apple1 = new Apple(1);
@@ -16,10 +15,12 @@ public class Main {
 
         Box<Apple> boxApple = new Box<Apple>(apple1, apple2);
         Box<Orange> boxOrange = new Box<Orange>();
-        Box<Fruit> boxFruit = new Box<Fruit>(apple1, orange1);
+        Box<Fruit> boxFruit = new Box<Fruit>(apple1, orange2);
 
         System.out.println(boxApple.getBox());
         System.out.println(boxFruit.getBox());
-        System.out.println(boxApple.weight(boxApple));
+        System.out.println(boxApple.weight());
+        System.out.println(boxFruit.weight());
+        System.out.println(boxApple.compare(boxFruit));
     }
 }
