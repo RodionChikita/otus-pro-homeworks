@@ -1,4 +1,4 @@
-package org.example;
+package ru.otus.java.pro;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
