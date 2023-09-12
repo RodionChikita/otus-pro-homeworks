@@ -7,7 +7,4 @@ public class Fruit {
         this.weight = weight;
     }
 
-    public int getWeight() {
-        return weight;
-    }
 }

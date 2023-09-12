@@ -13,14 +13,17 @@ public class Main {
         Orange orange3 = new Orange(3);
         Orange orange4 = new Orange(4);
 
-        Box<Apple> boxApple = new Box<Apple>(apple1, apple2);
-        Box<Orange> boxOrange = new Box<Orange>();
-        Box<Fruit> boxFruit = new Box<Fruit>(apple1, orange2);
+        Box<Apple> boxApple = new Box<>(apple1, apple2);
+        Box<Apple> boxApple1 = new Box<>(apple3, apple4);
+        Box<Orange> boxOrange = new Box<>();
+        Box<Fruit> boxFruit = new Box<>(apple1, orange2);
 
         System.out.println(boxApple.getBox());
         System.out.println(boxFruit.getBox());
         System.out.println(boxApple.weight());
         System.out.println(boxFruit.weight());
         System.out.println(boxApple.compare(boxFruit));
+        boxApple.pourer(boxApple1);
+        System.out.println(boxApple1.getBox());
     }
 }

@@ -14,19 +14,27 @@ public class Box<T extends Fruit> {
         return weight;
     }
 
+    public void pourer(Box<T> anotherBox){
+        for (T object: this.objects) {
+            anotherBox.objects.add(object);
+        }
+        this.objects.clear();
+    }
 
-    public boolean compare(Box<?> anotherBox) {
+    public void addObject(T object){
+        this.objects.add(object);
+    }
+
+
+    public boolean compare(Box<? extends Fruit> anotherBox) {
         return this.weight() == anotherBox.weight();
     }
 
     public ArrayList<T> getBox() {
-        return (ArrayList<T>) objects;
+        return objects;
     }
 
-    public void setBox(ArrayList<T> objects) {
-        this.objects = objects;
-    }
-
+    @SafeVarargs
     public Box(T... objects) {
         this.objects = new ArrayList<>(Arrays.asList(objects));
     }
