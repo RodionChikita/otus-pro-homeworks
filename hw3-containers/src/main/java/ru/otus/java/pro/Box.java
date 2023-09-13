@@ -2,9 +2,11 @@ package ru.otus.java.pro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Box<T extends Fruit> {
-    private ArrayList<T> objects;
+    private List<T> objects;
+
 
     public int weight() {
         int weight = 0;
@@ -14,7 +16,7 @@ public class Box<T extends Fruit> {
         return weight;
     }
 
-    public void pourer(Box<T> anotherBox){
+    public void pourer(Box<? super T> anotherBox){
         for (T object: this.objects) {
             anotherBox.objects.add(object);
         }
@@ -26,11 +28,15 @@ public class Box<T extends Fruit> {
     }
 
 
-    public boolean compare(Box<? extends Fruit> anotherBox) {
-        return this.weight() == anotherBox.weight();
+    public boolean compare ( Box<? extends Fruit> anotherBox) {
+        if (anotherBox != null) {
+            return this.weight() == anotherBox.weight();
+        }else {
+            return false;
+        }
     }
 
-    public ArrayList<T> getBox() {
+    public List<T> getBox() {
         return objects;
     }
 
