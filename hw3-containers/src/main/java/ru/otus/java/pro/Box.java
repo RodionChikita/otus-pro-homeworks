@@ -16,25 +16,25 @@ public class Box<T extends Fruit> {
         return weight;
     }
 
-    public void pourer(Box<? super T> anotherBox){
-        for (T object: this.objects) {
-            anotherBox.objects.add(object);
+    public void pourer(Box<? super T> anotherBox) {
+        if (anotherBox != this) {
+            anotherBox.objects.addAll(this.objects);
+            this.objects.clear();
         }
-        this.objects.clear();
     }
 
-    public void addObject(T object){
+    public void addObject(T object) {
         this.objects.add(object);
     }
 
 
-    public boolean compare ( Box<? extends Fruit> anotherBox) {
-        if (anotherBox != null) {
-            return this.weight() == anotherBox.weight();
-        }else {
+    public boolean compare(Box<? extends Fruit> anotherBox) {
+        if (anotherBox == null) {
             return false;
         }
+        return this.weight() == anotherBox.weight();
     }
+
 
     public List<T> getBox() {
         return objects;

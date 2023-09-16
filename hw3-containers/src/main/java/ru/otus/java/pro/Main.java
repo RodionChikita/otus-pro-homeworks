@@ -14,7 +14,7 @@ public class Main {
         Orange orange4 = new Orange(4);
 
         Box<Apple> boxApple = new Box<>(apple1, apple2);
-        Box<Apple> boxApple1 = new Box<>(apple3, apple4);
+        Box<Apple> boxApple1 = null;
         Box<Orange> boxOrange = null;
         Box<Fruit> boxFruit = new Box<>(apple1, orange2);
 
@@ -23,7 +23,7 @@ public class Main {
         System.out.println(boxApple.weight());
         System.out.println(boxFruit.weight());
         System.out.println(boxApple.compare(boxFruit));
-        boxApple.pourer(boxFruit);
-        System.out.println(boxFruit.getBox());
+        boxApple.pourer(boxApple);
+        System.out.println(boxApple.getBox());
     }
 }
