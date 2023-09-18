@@ -17,7 +17,7 @@ public class Box<T extends Fruit> {
     }
 
     public void pourer(Box<? super T> anotherBox) {
-        if (anotherBox != this) {
+        if (anotherBox != this && anotherBox != null) {
             anotherBox.objects.addAll(this.objects);
             this.objects.clear();
         }
