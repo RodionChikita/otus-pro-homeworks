@@ -1,4 +1,3 @@
 rootProject.name = 'otus-pro-homeworks'
 include 'hw1-gradle'
-include 'hw3-containers'
 
