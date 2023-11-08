@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -36,10 +37,9 @@ public class VaultImpl implements Vault {
                 }
             }
         }
-        System.out.println(F[sum]);
         try {
             if (F[sum] == INFINITY) {
-                throw new RuntimeException();
+                throw new RuntimeException("Не возможно выдать сумму имеющимися номиналами");
             } else {
                 int[] billsToGet = new int[k];
                 while (sum > 0) {
@@ -52,12 +52,12 @@ public class VaultImpl implements Vault {
                         }
                     }
                 }
-                for(i = 0; i < k; i++){
-                    if(billsToGet[i] > bills[i]){
+                for (i = 0; i < k; i++) {
+                    if (billsToGet[i] > bills[i]) {
                         throw new RuntimeException("Банкомат не может выдать сумму");
                     }
                 }
-                for(i = 0; i < k; i++){
+                for (i = 0; i < k; i++) {
                     moneyBoxes.get(i).getMoney(billsToGet[i]);
                 }
             }
@@ -79,16 +79,21 @@ public class VaultImpl implements Vault {
 
     @Override
     public void putMoney(List<Integer> bills) {
-        for (MoneyBox moneyBox : moneyBoxes) {
-            for (Integer bill : bills) {
-                if (bill == moneyBox.getDenomination()) {
-                    moneyBox.putMoney(1);
-                    bills.remove(bill);
+        int billsDeposited = 0;
+        try {
+            for (MoneyBox moneyBox : moneyBoxes) {
+                for (Integer bill : bills) {
+                    if (bill == moneyBox.getDenomination()) {
+                        moneyBox.putMoney(1);
+                        billsDeposited++;
+                    }
                 }
             }
-        }
-        if (!bills.isEmpty()) {
-            throw new RuntimeException();
+            if (billsDeposited != bills.size()) {
+                throw new RuntimeException("Не все купюры приняты");
+            }
+        } catch (RuntimeException exception) {
+            System.out.println(exception.getMessage());
         }
     }
 }

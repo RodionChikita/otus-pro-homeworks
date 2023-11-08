@@ -1,6 +1,7 @@
 package ru.otus.java.pro;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class ATM {
     public static void main(String[] args) {
@@ -14,6 +15,8 @@ public class ATM {
         System.out.println(vault.sum());
         vault.getMoney(19000);
         System.out.println(moneyBox4.getBills());
+        System.out.println(vault.sum());
+        vault.putMoney(List.of(10,1000,500,200));
         System.out.println(vault.sum());
     }
 }

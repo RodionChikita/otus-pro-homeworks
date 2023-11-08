@@ -18,18 +18,18 @@ public class MoneyBoxImpl implements MoneyBox {
 
     @Override
     public int sum() {
-        return bills*denomination;
+        return bills * denomination;
     }
 
 
     @Override
     public int getMoney(int bills) {
-            if (this.bills >= bills) {
-                this.bills -= bills;
-                return bills * denomination;
-            } else {
-                throw new RuntimeException("1111");
-            }
+        if (this.bills >= bills) {
+            this.bills -= bills;
+            return bills * denomination;
+        } else {
+            throw new RuntimeException("Банкомат не может выдать сумму");
+        }
     }
 
     @Override
