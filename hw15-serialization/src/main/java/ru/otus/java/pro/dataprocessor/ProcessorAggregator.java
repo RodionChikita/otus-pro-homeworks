@@ -7,12 +7,11 @@ import ru.otus.java.pro.oldStructure.Member;
 import ru.otus.java.pro.oldStructure.Message;
 import ru.otus.java.pro.oldStructure.SmsData;
 
-import java.text.ParseException;
 import java.util.*;
 
 public class ProcessorAggregator implements Processor {
     @Override
-    public SmsDataNewStructure process(SmsData data){
+    public SmsDataNewStructure process(SmsData data) {
         SmsDataNewStructure dataNewStructure = new SmsDataNewStructure();
         Map<String, List<MessageAggregatedByBelongNumber>> dataMap = new HashMap<>();
         for (ChatSession chatSession : data.getChatSessions()) {
@@ -34,7 +33,7 @@ public class ProcessorAggregator implements Processor {
                     dataMap.put(belongNumber, messageList);
                 }
                 dataMap.get(belongNumber).add(messageAggregated);
-                Collections.sort(dataMap.get(belongNumber), Comparator.comparing(MessageAggregatedByBelongNumber :: getSendDate));
+                Collections.sort(dataMap.get(belongNumber), Comparator.comparing(MessageAggregatedByBelongNumber::getSendDate));
             }
         }
         dataNewStructure.setMessages(dataMap);

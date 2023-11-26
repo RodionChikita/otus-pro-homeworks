@@ -7,7 +7,6 @@ import ru.otus.java.pro.newStructure.SmsDataNewStructure;
 import ru.otus.java.pro.oldStructure.SmsData;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Demo {

@@ -1,6 +1,7 @@
 package ru.otus.java.pro.newStructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class MessageAggregatedByBelongNumber {
     @JsonProperty("chat_identifier")
     private String chatIdentifier;
