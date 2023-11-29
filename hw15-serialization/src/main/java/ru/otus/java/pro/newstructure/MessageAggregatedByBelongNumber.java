@@ -1,4 +1,4 @@
-package ru.otus.java.pro.newStructure;
+package ru.otus.java.pro.newstructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,6 +13,7 @@ public class MessageAggregatedByBelongNumber {
     private String sendDate;
     @JsonProperty("text")
     private String text;
+
 
     public String getChatIdentifier() {
         return chatIdentifier;

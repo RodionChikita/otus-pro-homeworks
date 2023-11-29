@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import ru.otus.java.pro.oldStructure.SmsData;
+import ru.otus.java.pro.oldstructure.SmsData;
 
 import java.io.FileReader;
 import java.io.IOException;

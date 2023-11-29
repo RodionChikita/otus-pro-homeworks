@@ -1,7 +1,7 @@
 package ru.otus.java.pro.dataprocessor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.otus.java.pro.newStructure.SmsDataNewStructure;
+import ru.otus.java.pro.newstructure.SmsDataNewStructure;
 
 import java.io.FileWriter;
 import java.io.IOException;

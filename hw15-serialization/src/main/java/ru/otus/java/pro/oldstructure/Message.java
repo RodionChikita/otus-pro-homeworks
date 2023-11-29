@@ -1,4 +1,4 @@
-package ru.otus.java.pro.oldStructure;
+package ru.otus.java.pro.oldstructure;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

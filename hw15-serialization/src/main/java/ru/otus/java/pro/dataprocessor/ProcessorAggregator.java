@@ -1,11 +1,11 @@
 package ru.otus.java.pro.dataprocessor;
 
-import ru.otus.java.pro.newStructure.MessageAggregatedByBelongNumber;
-import ru.otus.java.pro.newStructure.SmsDataNewStructure;
-import ru.otus.java.pro.oldStructure.ChatSession;
-import ru.otus.java.pro.oldStructure.Member;
-import ru.otus.java.pro.oldStructure.Message;
-import ru.otus.java.pro.oldStructure.SmsData;
+import ru.otus.java.pro.newstructure.MessageAggregatedByBelongNumber;
+import ru.otus.java.pro.newstructure.SmsDataNewStructure;
+import ru.otus.java.pro.oldstructure.ChatSession;
+import ru.otus.java.pro.oldstructure.Member;
+import ru.otus.java.pro.oldstructure.Message;
+import ru.otus.java.pro.oldstructure.SmsData;
 
 import java.util.*;
 
@@ -21,22 +21,30 @@ public class ProcessorAggregator implements Processor {
                 messageAggregated.setChatIdentifier(chatSession.getChatIdentifier());
                 messageAggregated.setSendDate(message.getSendDate());
                 messageAggregated.setText(message.getText());
-                int handleId = message.getHandleId();
-                for (Member member : chatSession.getMembers()) {
-                    if (handleId == member.getHandleId()) {
-                        messageAggregated.setLast(member.getLast());
-                    }
-                }
-                String belongNumber = messageAggregated.getBelongNumber();
-                if (!dataMap.containsKey(belongNumber)) {
-                    List<MessageAggregatedByBelongNumber> messageList = new ArrayList<>();
-                    dataMap.put(belongNumber, messageList);
-                }
-                dataMap.get(belongNumber).add(messageAggregated);
-                Collections.sort(dataMap.get(belongNumber), Comparator.comparing(MessageAggregatedByBelongNumber::getSendDate));
+                messageAggregated.setLast(last(message, chatSession));
+                addMessageInMap(messageAggregated, dataMap);
+                Collections.sort(dataMap.get(messageAggregated.getBelongNumber()), Comparator.comparing(MessageAggregatedByBelongNumber::getSendDate));
             }
         }
         dataNewStructure.setMessages(dataMap);
         return dataNewStructure;
+    }
+    private void addMessageInMap(MessageAggregatedByBelongNumber messageAggregated, Map<String, List<MessageAggregatedByBelongNumber>> dataMap){
+        String belongNumber = messageAggregated.getBelongNumber();
+        if (!dataMap.containsKey(belongNumber)) {
+            List<MessageAggregatedByBelongNumber> messageList = new ArrayList<>();
+            dataMap.put(belongNumber, messageList);
+        }
+        dataMap.get(belongNumber).add(messageAggregated);
+    }
+    private String last(Message message, ChatSession chatSession){
+        int handleId = message.getHandleId();
+        for (Member member : chatSession.getMembers()) {
+            if (handleId == member.getHandleId()) {
+                String last = member.getLast();
+                return last;
+            }
+        }
+        throw new RuntimeException();
     }
 }

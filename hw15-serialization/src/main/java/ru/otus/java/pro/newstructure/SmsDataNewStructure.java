@@ -1,4 +1,4 @@
-package ru.otus.java.pro.newStructure;
+package ru.otus.java.pro.newstructure;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

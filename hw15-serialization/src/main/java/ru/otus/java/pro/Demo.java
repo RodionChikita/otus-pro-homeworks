@@ -3,14 +3,14 @@ package ru.otus.java.pro;
 
 import org.json.simple.parser.ParseException;
 import ru.otus.java.pro.dataprocessor.*;
-import ru.otus.java.pro.newStructure.SmsDataNewStructure;
-import ru.otus.java.pro.oldStructure.SmsData;
+import ru.otus.java.pro.newstructure.SmsDataNewStructure;
+import ru.otus.java.pro.oldstructure.SmsData;
 
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Demo {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Deserializer deserializer = new FileDeserializer();
         Serializer serializer = new FileSerializer();
         Processor processor = new ProcessorAggregator();
