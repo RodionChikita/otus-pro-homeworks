@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        h1, h2, h3 {
+            color: black;
+        }
+
+        .content-block {
+            width: 800px;
+            margin-left: 20px;
+        }
+
+        .input-form > input{
+            width: 300px;
+        }
+
+        pre {
+            border: 1px solid steelblue;
+            width: 300px;
+            min-height: 50px;
+        }
+
+		form {
+            border: 1px solid steelblue;
+			width: 70%;
+        }
+
+		table{
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 100%;
+		}
+
+		tr{
+		border: 1px solid steelblue;
+		width: 90%;
+		border-radius 0px 0px;
+		}
+
+		submit{
+		border: 1px solid black;
+		border-radius 0px 0px;
+		}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Put Money</h1>
+
+<form th:action = @{/putMoney} method=post>
+    <table>
+        <tr>
+            <td><label for="cardNumberTextBox">Card number:</label></td>
+            <td><input id="cardNumberTextBox" name="cardNum" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="pinTextBox">PIN code:</label></td>
+            <td><input id="pinTextBox" name="pin" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="count5000">5000 notes:</label></td>
+            <td><input id="count5000" name="count5000" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="count1000">1000 notes:</label></td>
+            <td><input id="count1000" name="count1000" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="count500">500 notes:</label></td>
+            <td><input id="count500" name="count500" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="count100">100 notes:</label></td>
+            <td><input id="count100" name="count100" type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Put Money"></td>
+        </tr>
+    </table>
+</form>
+<div th:if="${balance}">
+    <h2>Current Balance:</h2>
+    <p th:text="${balance}"></p>
+</div>
+</body>
+</html>
