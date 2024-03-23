@@ -25,17 +25,11 @@ public class DefaultSecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http
-                .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("api/v1/write/**").hasAuthority("WRITER")
-                            .requestMatchers("api/v1/read/**").hasAuthority("READER");
-
-                })
-                .csrf(csrf -> {
-                    csrf.csrfTokenRepository(new HttpSessionCsrfTokenRepository());
-                })
+        http.authorizeHttpRequests(registry ->
+                        registry.requestMatchers("api/v1/write/**").hasAuthority("WRITER")
+                                .requestMatchers("api/v1/read/**").hasAuthority("READER"))
+                .csrf(csrf -> csrf.csrfTokenRepository(new HttpSessionCsrfTokenRepository()))
                 .formLogin(Customizer.withDefaults());
-
         return http.build();
     }
 

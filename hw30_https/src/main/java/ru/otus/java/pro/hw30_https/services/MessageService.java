@@ -8,8 +8,7 @@ import ru.otus.java.pro.hw30_https.dtos.MessageDto;
 import ru.otus.java.pro.hw30_https.entites.Message;
 import ru.otus.java.pro.hw30_https.repositories.MessageRepository;
 
-import javax.net.ssl.SSLContext;
-import java.io.File;
+
 import java.util.Date;
 import java.util.List;
 
