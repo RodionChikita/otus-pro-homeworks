@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        h1, h2, h3 {
+            color: black;
+        }
+
+        .content-block {
+            width: 800px;
+            margin-left: 20px;
+        }
+
+        .input-form > input{
+            width: 300px;
+        }
+
+        pre {
+            border: 1px solid steelblue;
+            width: 300px;
+            min-height: 50px;
+        }
+
+		form {
+            border: 1px solid steelblue;
+			width: 70%;
+        }
+
+		table{
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 100%;
+		}
+
+		tr{
+		border: 1px solid steelblue;
+		width: 90%;
+		border-radius 0px 0px;
+		}
+
+		#action{
+		border: 1px solid steelblue;
+		width: 91.5%;
+		border-radius 0px 0px;
+		}
+
+		submit{
+		border: 1px solid black;
+		border-radius 0px 0px;
+		}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Get Money</h1>
+<form th:action = @{/getMoney} method=post>
+    <table>
+        <tr>
+            <td><label for="cardNumberTextBox">Card number:</label></td>
+            <td><input id="cardNumberTextBox" name="cardNum" type="text"></td>
+        </tr>
+         <tr>
+            <td><label for="pinTextBox">PIN code:</label></td>
+            <td><input id="pinTextBox" name="pin" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="sumTextBox">Amount:</label></td>
+            <td><input id="sumTextBox" name="amount" type="text"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Get Money"></td>
+        </tr>
+    </table>
+</form>
+<div th:if="${count5000 != null or count1000 != 0 or count500 != null or count100 != null}">
+    <h2>Money you get:</h2>
+    <p th:if="${count5000 != null}">5000 notes:<span th:text = ${count5000}></span></p>
+    <p th:if="${count1000 != null}">1000 notes:<span th:text = ${count1000}></span></p>
+    <p th:if="${count500 != null}">500 notes:<span th:text = ${count500}></span></p>
+    <p th:if="${count100 != null}">100 notes:<span th:text = ${count100}></span></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        h1, h2, h3 {
+            color: black;
+        }
+
+        .content-block {
+            width: 800px;
+            margin-left: 20px;
+        }
+
+        .input-form > input{
+            width: 300px;
+        }
+
+        pre {
+            border: 1px solid steelblue;
+            width: 300px;
+            min-height: 50px;
+        }
+
+		form {
+            border: 1px solid steelblue;
+			width: 70%;
+        }
+
+		table{
+		margin-left: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 100%;
+		}
+
+		tr{
+		border: 1px solid steelblue;
+		width: 90%;
+		border-radius 0px 0px;
+		}
+
+		#action{
+		border: 1px solid steelblue;
+		width: 91.5%;
+		border-radius 0px 0px;
+		}
+
+		submit{
+		border: 1px solid black;
+		border-radius 0px 0px;
+		}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action = @{/changePinCode} method=post>
+    <table>
+        <tr>
+            <td><label for="cardNumberTextBox">Card number:</label></td>
+            <td><input id="cardNumberTextBox" name="cardNum" type="number"></td>
+        </tr>
+        <tr>
+            <td><label for="oldPinTextBox">Old PIN code:</label></td>
+            <td><input id="oldPinTextBox" name="pin" type="number"></td>
+        </tr>
+        <tr>
+            <td><label for="newPinTextBox">New PIN code:</label></td>
+            <td><input id="newPinTextBox" name="newPin" type="number"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Change PIN Code"></td>
+        </tr>
+    </table>
+</form>
+<div th:if="${message}">
+    <p th:text="${message}"></p>
+</div>
+</body>
+</html>
